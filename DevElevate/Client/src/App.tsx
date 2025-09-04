@@ -1,3 +1,4 @@
+import AnalyticsDashboard from "./components/Admin/AnalyticsDashboard"; // ✅ import new component
 import { AuthProvider } from "./contexts/AuthContext";
 import { GlobalProvider, useGlobalState } from "./contexts/GlobalContext";
 import { NotificationProvider } from "./contexts/NotificationContext";
@@ -27,7 +28,6 @@ import AdminSystemLogs from "./components/Admin/AdminSystemLogs";
 import ProtectedRoute from "./components/Auth/ProtectedRoute";
 import LoginRegister from "./components/Auth/LoginRegister";
 import Dashboard from "./components/Dashboard/Dashboard";
-import Settings from "./components/Settings/Settings";
 import PremiumPage from "./components/premium/PremiumPage";
 import PaymentPage from "./components/Payment/PaymentPage";
 import ProjectRecommender from "./components/ProjectRecommender/ProjectRecommender";
@@ -61,6 +61,37 @@ const AppContent = () => {
                 />
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/placements" element={<PlacementStats />}/>
+                        {/* Admin Routes */}
+                <Route
+                  path="/admin"
+                  element={
+                    <ProtectedRoute requireAdmin={true}>
+                      <AdminProvider>
+                        <AdminDashboard />
+                      </AdminProvider>
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/logs"
+                  element={
+                    <ProtectedRoute requireAdmin={true}>
+                      <AdminProvider>
+                        <AdminSystemLogs />
+                      </AdminProvider>
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/analytics"
+                  element={
+                    <ProtectedRoute requireAdmin={true}>
+                      <AdminProvider>
+                        <AnalyticsDashboard /> {/* ✅ NEW route */}
+                      </AdminProvider>
+                    </ProtectedRoute>
+                  }
+                />
 
                 {/* Protected Routes */}
                 <Route
@@ -96,7 +127,6 @@ const AppContent = () => {
                                 <Route path="tasks" element={<TasksView />} />
                                 <Route path="notes" element={<NotesView />} />
                                 <Route path="calendar" element={<CalendarView />} />
-                                <Route path="settings" element={<Settings />} />
                                 <Route path="premium" element={<PremiumPage />} />
                                 <Route path="payment" element={<PaymentPage />} />
                                 <Route path="profile" element={<UserProfile />} />
