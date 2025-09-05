@@ -1,6 +1,6 @@
 // ✅ All imports at the top
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import AnalyticsDashboard from "./components/Admin/AnalyticsDashboard";
+import AnalyticsDashboard from "./components/AnalyticsDashboard.tsx";
 import { AuthProvider } from "./contexts/AuthContext";
 import { GlobalProvider, useGlobalState } from "./contexts/GlobalContext";
 import { NotificationProvider } from "./contexts/NotificationContext";
@@ -84,7 +84,7 @@ const AppContent = () => {
           element={
             <ProtectedRoute requireAdmin={true}>
               <AdminProvider>
-                <AnalyticsDashboard /> {/* ✅ NEW */}
+                <AnalyticsDashboard /> {/* ✅ Your new Analytics page */}
               </AdminProvider>
             </ProtectedRoute>
           }
@@ -154,5 +154,6 @@ function App() {
 }
 
 export default App;
+
 
 
