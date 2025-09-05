@@ -84,7 +84,6 @@ const AppContent = () => {
           element={
             <ProtectedRoute requireAdmin={true}>
               <AdminProvider>
-                <AnalyticsDashboard /> {/* ✅ Your new Analytics page */}
               </AdminProvider>
             </ProtectedRoute>
           }
