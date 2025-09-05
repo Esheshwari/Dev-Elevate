@@ -6,7 +6,7 @@ import {
   fetchModulesCompleted,
   fetchQuizAttempts,
   fetchFeedback,
-} from "../../services/analyticsService";
+} from "../services/analyticsService";
 import {
   BarChart,
   Bar,
@@ -18,7 +18,7 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  CartesianGrid,
+  CartesianGrid, 
   Legend,
   ResponsiveContainer,
 } from "recharts";
@@ -148,7 +148,7 @@ const AnalyticsDashboard: React.FC = () => {
                 outerRadius={80}
                 label
               >
-                {pieData.map((entry, index) => (
+                {pieData.map((_, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
